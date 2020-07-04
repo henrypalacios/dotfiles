@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+##? Install Node and set a global folder in $HOME
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_node
+
+sudo apt install nodejs
+#$(echo node –version)
+
+sudo apt install npm
+#$(echo npm –version)
+
+npmdir="${HOME}/.npm-global"
+
+echo "Creating global folder ${npmdir}"
+
+if [ ! -d ${npmdir} ]; then
+    mkdir -p ${npmdir}
+fi
+
+echo "Setting as npm config prefix ${npmdir}"
+npm config set prefix '~/.npm-global'
+
+# envfix='
+# export NPM_PACKAGES="%s"
+# export NODE_PATH="$NPM_PACKAGES/lib/node_modules${NODE_PATH:+:$NODE_PATH}"
+# export PATH="$NPM_PACKAGES/bin:$PATH"
+# '
+
+# printf "${envfix}" ${npmdir} >> "${DOTFILES_PATH}/shell/_exports/exports.sh"

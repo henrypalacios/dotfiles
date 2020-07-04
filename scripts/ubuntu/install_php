@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+##? Install PHP and extension for Laravel, Symfony, MySQL, PostgreSQL, RabbitMQ
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_php
+
+# install latest php. check https://www.php.net/supported-versions.php
+sudo apt install -y php-fpm php-cli unzip
+
+# extension mysql/mariadb | postgreSQL | AMQP protocol
+sudo apt install -y php-mysql php-pgsql php-amqp
+
+# Support for dealing with character encoding, XML and precision mathematics (Laravel)
+sudo apt install -y php-mbstring php-xml php-bcmath
+
+# Support for php-gd (Symfony5)
+sudo apt install -y php-gd
+
+# Install  composer
+PATH_COMPOSER="${HOME}/composer-setup.php"
+curl -sS https://getcomposer.org/installer -o ${PATH_COMPOSER}
+HASH=`curl -sS https://composer.github.io/installer.sig`
+php -r "if (hash_file('SHA384', '${PATH_COMPOSER}') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('${PATH_COMPOSER}'); } echo PHP_EOL;"
+sleep 1
+
+if [ ! -d ${PATH_COMPOSER} ]; then
+      echo "Installing Composer as a Global..."
+      sudo php ${PATH_COMPOSER} --install-dir=/usr/local/bin --filename=composer
+      composer --version
+else
+      echo "${PATH_COMPOSER} doesn't exists..."
+fi

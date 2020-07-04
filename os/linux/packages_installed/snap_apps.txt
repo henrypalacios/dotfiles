@@ -1,0 +1,10 @@
+Nombre
+canonical-livepatch
+code
+core
+core18
+gnome-3-34-1804
+gtk-common-themes
+snap-store
+snapd
+sublime-text

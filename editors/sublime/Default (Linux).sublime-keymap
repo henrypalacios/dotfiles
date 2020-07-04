@@ -1,0 +1,49 @@
+[
+	{ "keys": ["alt+up"], "command": "swap_line_up" },
+    { "keys": ["alt+down"], "command": "swap_line_down" },
+    
+    { "keys": ["ctrl+7"], "command": "toggle_comment", "args": { "block": false } },
+	{ "keys": ["ctrl+shift+7"], "command": "toggle_comment", "args": { "block": true } },
+
+	{ "keys": ["control+keypad_divide"],"command": "toggle_comment", "args": {"block": false} }, 
+	{ "keys": ["shift+control+keypad_divide"],"command": "toggle_comment", "args": {"block": true}},
+
+	// Runs currently open file in repl
+	{
+	    "keys": ["ctrl+shift+f10"],
+	    "command": "project_venv_repl"
+	},
+	// Runs repl without any file
+	{
+	    "keys": ["ctrl+f10"],
+	    "command": "repl_open",
+        "caption": "Bash",
+    	"id": "repl_bash",
+    	"mnemonic": "b",
+    	"args": {
+       	"type": "subprocess",
+           "encoding": {"windows": "utf-8",
+           			"linux": "utf-8",
+                       "osx": "utf-8"},
+ 			"cmd": {"windows": ["bash", "-i", "-l", "-c", "cd '$file_path'; bash -i"],
+                            "linux": ["bash", "-i", "-l", "-c", "cd '$file_path'; bash -i"],
+                            "osx": ["bash", "-i", "-l", "-c", "cd '$file_path'; bash -i"]},
+           "cwd": "$file_path",
+           "cmd_postfix": "\n",
+           "env": {},
+           "suppress_echo": true,
+          "syntax": "Packages/Text/Plain text.tmLanguage"
+         }
+                
+	},
+	// Runs a specific file in repl, change main.py to desired file
+	{
+	    "keys": ["f7"],
+	    "command": "project_venv_repl",
+	    "args": {
+	        "open_file": "/home/henry/code/python/anymain.py"
+	    }
+	},
+
+	{ "keys": ["ctrl+shift+y"], "command": "expand_tabs", "args": { "set_translate_tabs": true } }
+]

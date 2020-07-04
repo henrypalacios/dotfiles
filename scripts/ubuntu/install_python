@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+##? Install Python, pip and pipenv
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_python
+
+
+if [[ "$(python3 -V)" =~ "Python 3" ]]; then
+    echo "Python 3 is installed"
+else
+    echo "Python must be installed"
+    exit 1;
+fi
+
+## Install Additional Tools
+sudo apt install -y build-essential libssl-dev libffi-dev default-libmysqlclient-dev
+
+## Install pip3
+if [[ "$(pip -V)" =~ "pip 2" ]]; then
+    echo "pip it's installed"
+else
+    echo "Installing pip..."
+    wget https://bootstrap.pypa.io/get-pip.py
+    sudo -H python3 get-pip.py 
+    sudo rm get-pip.py
+fi
+
+
+## Install pipenv
+if [[ "$(pipenv --version)" =~ "pipenv," ]]; then
+    echo "pipenv it's installed"
+else
+    echo "Installing pipenv..."
+    sudo -H pip install -U pipenv
+fi
+
+# envfix='
+
+# export PTYHON_PATH="%s"
+# export PATH="$PTYHON_PATH/bin:$PATH"
+# '
+
+# printf "${envfix}" "$(which python3)" >> "${DOTFILES_PATH}/shell/_exports/exports.sh"

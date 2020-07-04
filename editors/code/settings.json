@@ -1,0 +1,28 @@
+{
+    "editor.fontSize": 15,
+    "editor.fontFamily": "Fira Code, ubuntu, Dank Mono",
+    "editor.fontLigatures": true,
+    "editor.renderWhitespace": "all",
+    "editor.suggestSelection": "first",
+    "workbench.sideBar.location": "left",
+    "workbench.colorTheme": "Monokai",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "terminal.integrated.fontFamily": "'monospace'",
+    "terminal.integrated.fontSize": 13,
+    "python.jediEnabled": false,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "sqltools.connections": [
+        {
+            "database": "crypstation",
+            "dialect": "PostgreSQL",
+            "name": "PostgreSQL",
+            "password": "secret",
+            "port": 5432,
+            "server": "localhost",
+            "username": "henry"
+        }
+    ],
+    "terminal.integrated.shell.linux": "/bin/bash",
+    "python.languageServer": "Microsoft",
+    "window.zoomLevel": 1,
+}

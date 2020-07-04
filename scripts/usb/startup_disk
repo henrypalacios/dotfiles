@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+##? Creating Ubuntu USB Startup Disk Using DDrescue Command
+#?? 1.0.0
+##?
+##? Usage:
+##?   startup_disk
+
+## TODO
+
+sudo apt install gddrescue
+
+# get sdx
+lsblk | grep '^sd' | awk '{print $1 $2}'
+
+# sudo ddrescue path/to/.iso /dev/sdx --force -D
+

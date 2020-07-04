@@ -1,0 +1,3 @@
+[submodule "modules/dotly"]
+	path = modules/dotly
+	url = https://github.com/CodelyTV/dotly.git

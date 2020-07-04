@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+##? Install rofi switch http://manpages.ubuntu.com/manpages/bionic/en/man1/rofi.1.html
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_rofi
+
+
+sudo apt-get install -y rofi
+
+# Check configuration
+rofi --help \
+    | awk -F':' '/Configuration/{ print "cat "$2 }' \
+    | . /dev/stdin
