@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+##? Install Mysql
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_mysql
+
+sudo apt -y install mysql-server
+
+sudo mysql_secure_installation

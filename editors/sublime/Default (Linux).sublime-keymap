@@ -1,5 +1,7 @@
 [
-	{ "keys": ["alt+up"], "command": "swap_line_up" },
+	{ "keys": ["ctrl+k+o"], "command": "prompt_open_folder" },
+
+    { "keys": ["alt+up"], "command": "swap_line_up" },
     { "keys": ["alt+down"], "command": "swap_line_down" },
     
     { "keys": ["ctrl+7"], "command": "toggle_comment", "args": { "block": false } },

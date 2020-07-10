@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+##? Install Nginx
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_nginx
+
+
+sudo apt update
+sudo apt -y install nginx 
+
+sudo ufw allow 'Nginx HTTP'
+
+#check public ip
+echo -e "Public IP: $(curl -4 icanhazip.com)"

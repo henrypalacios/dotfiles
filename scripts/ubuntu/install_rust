@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+##? Install Rust, installer installs the stable version of the Rust compiler, its package manager, Cargo
+##? these are installed by default under the ~/.cargo directory.
+##? inspired from https://www.packtpub.com/application-development/mastering-rust-second-edition/1/ch01lvl1sec11/installing-the-rust-compiler-and-toolchain
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_rust
+
+exports="${DOTFILES_PATH}/shell/_exports/exports.sh"
+rust_path="$HOME/.cargo"
+
+curl https://sh.rustup.rs -sSf | sh
+
+if ! grep -qxF 'export RUSTPATH="${rust_path}"' ${exports} ; then 
+    echo -e 'Stablishing rust path in ${rust_path}...'
+    envfix='
+export RUSTPATH="%s"
+export PATH="$RUSTPATH/bin:$PATH"
+'
+
+    printf "${envfix}" ${rust_path} >> "${exports}"
+fi

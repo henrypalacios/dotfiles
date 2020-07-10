@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+##? Install rust packages used 
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_rust_packages
+
+cargo install docpars bat exa

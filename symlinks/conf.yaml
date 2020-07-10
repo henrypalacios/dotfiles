@@ -9,9 +9,10 @@
       - ~/.z
 
 - link:
-    ~/.gitconfig: git/.gitconfig
     ~/.bashrc: shell/bash/.bashrc
     ~/.bash_profile: shell/bash/.bash_profile
+    ~/.gitconfig: git/.gitconfig
+    ~/.gitignore_global: git/.gitignore_global
     ~/.profile: shell/bash/.profile
     ~/.zimrc: shell/zsh/.zimrc
     ~/.zlogin: shell/zsh/.zlogin

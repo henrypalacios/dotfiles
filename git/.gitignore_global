@@ -1,0 +1,33 @@
+# EDITORS
+## IntelliJ IDEA
+.idea
+*.iml
+*.iws
+.idea-compl
+*.sc
+
+## VS-Code
+.vscode
+
+# LANGUAGES
+## Python
+*.py[co]
+__pycache__
+*.ipynb_checkpoints/
+
+## Clojure
+.lein-repl-history
+.lein-failures
+completer.hist
+.nrepl-port
+
+## Scala
+libsigar-universal64-macosx.dylib
+
+# CUSTOM
+*.no-commit.*
+.env
+
+
+# Mac
+.DS_Store

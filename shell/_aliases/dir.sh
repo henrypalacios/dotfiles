@@ -1,10 +1,13 @@
 alias ..="cd .."
 alias ...="cd ../.."
-alias ll="ls -l"
-alias la="ls -la"
+alias ll="exa -l"
+alias la="exa -la"
 
 # Jumps
 alias ~="cd ~"
 alias c='cd ~/Code'
+alias cdpy="cd ~/Code/py"
+alias cdrn="cd ~/Code/Mobile/ReactNavite"
+alias cdph="cd ~/Code/php"
 
 eval $(thefuck --alias)

@@ -1,0 +1,122 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOTFILES_PATH/scripts/core/documentation.sh"
+
+##? Set a virtual host of Nginx
+#?? 1.0.0
+##?
+##? Usage:
+##?    vhost_nginx <domain> <path>
+##?    vhost_nginx <domain> <path> --database <nameDatabase>
+##?
+##? Options:
+##?    -h --help   Show this screen.
+##?    -d --database  nameDatabase
+docs::eval "$@"
+
+domain=$1
+rootDir=$2
+owner=$(whoami | awk '{print $1}')
+sitesEnable='/etc/nginx/sites-enabled/'
+sitesAvailable='/etc/nginx/sites-available/'
+
+
+function check_if_exists {
+    ### check if domain already exists
+    if [ -e $sitesAvailable$domain ]; then
+        echo -e $"This domain already exists.\nPlease Try Another one"
+        exit;
+    fi
+
+    ### check if directory exists or not
+    if ! [ -d $rootDir ]; then
+        echo $"ERROR: $rootDir doesn't exists. Please check path."
+        exit;
+    fi
+}
+
+function create_config {
+    if ! echo "server {
+        listen   80;
+        root $rootDir;
+        index index.php index.html index.htm;
+        server_name $domain;
+
+        # serve static files directly
+        location ~* \.(jpg|jpeg|gif|css|png|js|ico|html)$ {
+            access_log off;
+            expires max;
+        }
+
+        # removes trailing slashes (prevents SEO duplicate content issues)
+        if (!-d \$request_filename) {
+            rewrite ^/(.+)/\$ /\$1 permanent;
+        }
+
+        # unless the request is for a valid file (image, js, css, etc.), send to bootstrap
+        if (!-e \$request_filename) {
+            rewrite ^/(.*)\$ /index.php?/\$1 last;
+            break;
+        }
+
+        # removes trailing 'index' from all controllers
+        if (\$request_uri ~* index/?\$) {
+            rewrite ^/(.*)/index/?\$ /\$1 permanent;
+        }
+
+        # catch all
+        error_page 404 /index.php;
+
+        location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        }
+
+        location ~ /\.ht {
+            deny all;
+        }
+
+    }" | sudo tee $sitesAvailable$domain
+    then
+        echo -e $"There is an ERROR create $domain file"
+        exit;
+    else
+        echo -e $"\nNew Virtual Host Created\n"
+    fi
+}
+
+function add_domain_in_hosts {
+    if ! echo "127.0.0.1 $domain" | sudo tee /etc/hosts; then
+        echo $"ERROR: Not able write in /etc/hosts"
+        exit;
+    else
+        echo -e $"Host added to /etc/hosts file \n"
+    fi
+}
+
+
+check_if_exists
+create_config
+add_domain_in_hosts
+
+sudo chown -R $owner:www-data $rootDir
+
+### enable website
+sudo ln -s $sitesAvailable$domain $sitesEnable$domain
+
+### restart Nginx
+sudo service nginx restart
+
+echo -e $"Complete! \nYou now have a new Virtual Host \nYour new host is: http://$domain \nAnd its located at $rootDir"
+
+if $database; then
+  name_database="${4}"
+  sudo mysql -e "CREATE DATABASE ${name_database} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+  echo -e "Database ${name_database} created..."
+fi
+
+exit;

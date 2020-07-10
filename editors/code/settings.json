@@ -22,7 +22,7 @@
             "username": "henry"
         }
     ],
-    "terminal.integrated.shell.linux": "/bin/bash",
+    "terminal.integrated.shell.linux": "/bin/zsh",
     "python.languageServer": "Microsoft",
     "window.zoomLevel": 1,
 }

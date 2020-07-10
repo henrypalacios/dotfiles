@@ -13,5 +13,19 @@
         "key": "alt+down",
         "command": "-notebook.cell.moveDown",
         "when": "notebookEditorFocused && !inputFocus && activeEditor == 'workbench.editor.notebook'"
-    }
+    },
+    {
+        "key": "alt+f12",
+        "mac": "alt+f12",
+        "command": "workbench.action.terminal.focus",
+        "when": "!terminalFocus",
+        "jetbrains": "Opens and focuses corresponding tool window (Terminal)"
+     },
+     {
+        "key": "alt+f12",
+        "mac": "alt+f12",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminalFocus",
+        "jetbrains": "Close corresponding tool window (Terminal)"
+      },
 ]
