@@ -1,10 +1,15 @@
-Nombre
+Name
 canonical-livepatch
 code
 core
 core18
+gnome-3-28-1804
 gnome-3-34-1804
 gtk-common-themes
+gtk2-common-themes
+microsoft-todo-unofficial
+shutter
 snap-store
 snapd
 sublime-text
+subtitle-edit

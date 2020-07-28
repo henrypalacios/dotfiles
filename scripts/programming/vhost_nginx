@@ -120,3 +120,6 @@ if $database; then
 fi
 
 exit;
+
+# Error wordpress permanlink
+# nginx https://wordpress.stackexchange.com/questions/189006/changing-permalinks-gives-me-404-errors-on-nginx

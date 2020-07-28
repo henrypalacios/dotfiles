@@ -8,6 +8,37 @@ set -euo pipefail
 ##? Usage:
 ##?   install_mysql
 
-sudo apt -y install mysql-server
-
+sudo apt -y install mysql-client mysql-server
+ 
 sudo mysql_secure_installation
+
+# Create Root User
+query="USE mysql;
+CREATE USER '${whoami}'@'localhost' IDENTIFIED BY 'secret';
+GRANT ALL PRIVILEGES ON *.* TO '${whoami}'@'localhost';
+FLUSH PRIVILEGES;"
+
+sudo mysql -e ${query}
+
+## SOLVE PROBLEM WITH USER ROOT (I don't tried)
+# Open & Edit /etc/my.cnf or /etc/mysql/my.cnf, depending on your distro.
+# Add skip-grant-tables under [mysqld]
+# Restart Mysql
+# You should be able to login to mysql now using the below command mysql -u root -p
+# Run mysql> flush privileges;
+# Set new password by ALTER USER 'root'@'localhost' IDENTIFIED BY 'NewPassword';
+# Go back to /etc/my.cnf and remove/comment skip-grant-tables
+# Restart Mysql
+# Now you will be able to login with the new password mysql -u root -p
+
+
+## UNINSTALL all configuration MySql
+# sudo -i
+# service mysql stop
+# killall -KILL mysql mysqld_safe mysqld
+# apt-get --yes purge mysql-server mysql-client
+# apt-get --yes autoremove --purge
+# apt-get autoclean
+# deluser --remove-home mysql
+# delgroup mysql
+# rm -rf /etc/mysql /var/lib/mysql /var/log/mysql* /var/log/upstart/mysql.log* /var/run/mysqld
