@@ -1,0 +1,12 @@
+% shell Symlinks
+
+# Create symlink
+ln -s <src_dirname> <dst_dirname>
+
+# Update symlink
+ln -sfn <src_dirname> <dst_dirname>
+
+# Remove symlink
+unlink <sample_dirname>
+
+$ dst_dirname: echo "$src_dirname " | sed "s/.*\///" | tr ' ' '\n'

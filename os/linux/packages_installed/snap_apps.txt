@@ -1,4 +1,5 @@
-Name
+Nombre
+android-studio
 canonical-livepatch
 code
 core
@@ -9,6 +10,7 @@ gtk-common-themes
 gtk2-common-themes
 microsoft-todo-unofficial
 shutter
+skype
 snap-store
 snapd
 sublime-text

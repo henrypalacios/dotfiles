@@ -1,0 +1,7 @@
+% mv, batch rename
+
+# batch rename into dir with the same extension
+
+for file in <pattern_name>*.<extension>; do sudo mv "$file" ./"${file/<pattern_name> //}"; done
+
+$ extension: echo "mp4 txt" | tr ' ' '\n'

@@ -20,4 +20,8 @@ fpath=("$DOTFILES_PATH/shell/zsh/themes" "$DOTLY_PATH/shell/zsh/themes" "$DOTLY_
 autoload -Uz promptinit && promptinit
 prompt henry
 
+# Read Dotly bindings
 source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
+
+# Read my bindings
+source "$DOTFILES_PATH/shell/zsh/bindings/key-bindings.zsh"

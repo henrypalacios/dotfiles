@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOTFILES_PATH/scripts/core/documentation.sh"
+
+##? Create a launcher by current user
+#?? 1.0.0
+##?
+##? Usage:
+##?   create_launcher <name_app>
+docs::eval "$@"
+
+
+to_create="/home/$USER/.local/share/applications/$name_app.desktop"
+
+touch ${to_create}
+
+envfix='#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=command to run here
+Name=%s
+Comment=comment here
+Icon=icon path here
+'
+
+printf "${envfix}" ${name_app} >> ${to_create}
+
+chmod +x ${name_app}.desktop
+
+vim ${to_create}

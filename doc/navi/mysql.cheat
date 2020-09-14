@@ -1,0 +1,29 @@
+% mysql, database
+
+# Create an SSH Tunnel on Linux and macOS 
+echo "Opening TunnelSSH Mysql <port>..."
+ssh <ssh_host> -L <port>:localhost:3306 -N
+
+; then execute $ mysql -h 127.0.0.1 -P <port> <user> -p
+
+$ ssh_host: awk '/Host / {print $2}' ~/.ssh/config
+$ port: echo "3307 " | tr ' ' '\n'
+
+
+# Download CSV
+mysql -u <user> -p -e "SELECT * FROM <table> \
+INTO OUTFILE <name.csv> \
+FIELDS TERMINATED BY ',' \ 
+ENCLOSED BY '"' \
+LINES TERMINATED BY '\n';"
+
+$ user: echo "${USER} " | tr ' ' '\n'
+
+# Create database
+mysql -u <user> -p -e "CREATE DATABASE <database> CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;"
+
+# Export databse
+mysqldump -u <user> -p <database> > <path>
+
+# Import database
+mysql -u <user> -p <database> <path>

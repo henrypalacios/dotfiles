@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOTFILES_PATH/scripts/core/documentation.sh"
+
+##? DDD
+#?? 1.0.0
+##?
+##? Usage:
+##?   ddd hexagonal <path>
+docs::eval "$@"
+
+mkdir -p "$path/application"
+touch "$path/application/__init__.py"
+mkdir -p "$path/domain"
+touch "$path/domain/__init__.py"
+mkdir -p "$path/infrastructure"
+touch "$path/infrastructure/__init__.py"
+
+echo "😬 Dooone!"

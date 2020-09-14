@@ -8,4 +8,17 @@ set -euo pipefail
 ##? Usage:
 ##?   install_rust_packages
 
-cargo install docpars bat exa
+cargo install docpars bat exa navi tealdeer
+
+exports="${DOTFILES_PATH}/shell/_exports/exports.sh"
+navi_path="${DOTFILES_PATH}/doc/navi"
+
+if ! grep -qxF 'export NAVI_PATH="${navi_path}"' ${exports} ; then 
+    echo -e 'Stablishing navi path in ${navi_path}...'
+    envfix='
+export NAVI_PATH="%s"
+export PATH="$NAVI_PATH/bin:$PATH"
+'
+
+    printf "${envfix}" ${navi_path} >> ${exports}
+fi

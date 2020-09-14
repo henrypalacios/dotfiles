@@ -1,0 +1,7 @@
+% laravel, coding
+
+# Allow write logs and cache of views
+sudo chown -R <user>:<websrv_group> storage bootstrap/cache && sudo chmod -R ug+rwx storage bootstrap/cache
+
+$ <user>: echo "${USER} " | tr ' ' '\n'
+$ <websrv_group>: echo "www-data " | tr ' ' '\n'

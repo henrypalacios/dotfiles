@@ -22,6 +22,14 @@ commit=$(
       --preview-window right:35%
 )
 
-commit_hash=$(echo ${commit} | awk '{print $2}')
+commit_hash=$(echo ${commit} | grep -o '[a-f0-9]\{7\}')
 
-echo ${commit_hash} | tr -d '\n' | xclip -selection clipboard
+command_exists() {
+  type "$1" >/dev/null 2>&1
+}
+
+if command_exists pbcopy; then
+  echo ${commit_hash} | tr -d '\n' | pbcopy  
+else
+  echo ${commit_hash} | tr -d '\n' | xclip -selection clipboard
+fi

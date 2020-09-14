@@ -1,0 +1,11 @@
+% rsync
+
+# Sync from a remote host
+rsync --progress -v -r -e "ssh" <ssh_host>:<path_remote> <path_local>
+
+# Sync from a remote host like as root
+rsync --progress -v -r -e "ssh" --rsync-path="sudo rsync" <ssh_host>:<path_remote> <path_local>
+
+$ ssh_host: awk '/Host / {print $2}' ~/.ssh/config
+$ path_remote: echo "~/ " | tr ' ' '\n'
+$ path_local: echo "~/ " | tr ' ' '\n'
