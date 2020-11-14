@@ -87,8 +87,8 @@ fi
 # check if vimrc is already exist
 if [ -L $vim_rc ] || [ -f $vim_rc ]
 then
-  _e "The $(vim_rc) already exist"
-  _q "Would you like to backup your $(vim_rc) first? [y/n] " ans
+  _e "The '$vim_rc'  already exist"
+  _q "Would you like to backup your '$vim_rc' first? [y/n] " ans
   if [ "$ans" == "y" ]
   then
     backup_path="$vim_rc-$(current_timestamp).back"
@@ -100,7 +100,8 @@ then
 fi
 
 # check if git is installed
-curl -L https://raw.githubusercontent.com/henrypalacios/dotfiles/master/editors/vim/.vimrc ~/.vimrc || {
+url=https://raw.githubusercontent.com/henrypalacios/dotfiles/master/editors/vim/.vimrc
+echo `curl -# -C - -o "${url}" "${vim_rc}"` || {
   echo "sorry, it was not possible to download the file"
   exit
 }
