@@ -100,7 +100,7 @@ then
 fi
 
 # check if git is installed
-hash curl -L https://raw.githubusercontent.com/henrypalacios/dotfiles/master/editors/vim/.vimrc ~/.vimrc || {
+curl -L https://raw.githubusercontent.com/henrypalacios/dotfiles/master/editors/vim/.vimrc ~/.vimrc || {
   echo "sorry, it was not possible to download the file"
   exit
 }
