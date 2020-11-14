@@ -2,17 +2,66 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+" Change leader to a comma because the backslash is too far away
+" That means all \x commands turn into ,x
+" The mapleader has to be set before vundle starts loading all
+" the plugins.
+let mapleader=","
+
+" =============== vim-plug Initialization ===============
+call plug#begin('~/.vim/plugged')
+
+" Theme
+Plug 'morhetz/gruvbox'
+" Search
+Plug 'easymotion/vim-easymotion'
+" Start Screen
+Plug 'mhinz/vim-startify'
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+let NERDTreeQuitOnOpen=1
+let NERDTreeShowHidden=1
+" Status tabline
+Plug 'vim-airline/vim-airline'
+" Fuzzy Search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" Easily surround things
+Plug 'tpope/vim-surround'
+
+
+call plug#end()
+
+
+"
+"========= nmap plugins ========
+nmap <Leader>s <Plug>(easymotion-s2)
+nmap <Leader>b :NERDTreeToggle<CR>
+nnoremap <C-p> :Files<CR>
+
 " ================ General Config ====================
+" Look
+colorscheme gruvbox                     
+set background=dark
+set colorcolumn=80,120
 
 set number                      "Line numbers are good
+set list
+set listchars=tab:▸\ ,eol:¬
+set numberwidth=1              "Set number row width
+set mouse=a                     "Allow interaciton with mouse
+set clipboard=unnamed,unnamedplus "Copy to clipboard and paste out vim, (*, +) register
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set showmode                    "Show current mode down the bottom
+set showmatch                   "Show the matching bracket
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
 set ruler                       "Add the current line and column"
+set encoding=utf-8              "encode files
+"set laststatus=2
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -20,20 +69,7 @@ set ruler                       "Add the current line and column"
 set hidden
 
 "turn on syntax highlighting
-syntax on
-
-" Change leader to a comma because the backslash is too far away
-" That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all
-" the plugins.
-let mapleader=","
-
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundles.vim
-" Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/vim/vundles.vim"))
-  source ~/vim/vundles.vim
-endif
+syntax enable
 
 " ================ Turn Off Swap Files ==============
 
@@ -44,9 +80,9 @@ set nowb
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
-if has('persistent_undo') && !isdirectory(expand('~').'/vim/backups')
-  silent !mkdir ~/vim/backups > /dev/null 2>&1
-  set undodir=~/vim/backups
+if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
+  silent !mkdir ~/.vim/backups > /dev/null 2>&1
+  set undodir=~/.vim/backups
   set undofile
 endif
 
@@ -104,6 +140,17 @@ set hlsearch        " Highlight searches by default
 set ignorecase      " Ignore case when searching...
 set smartcase       " ...unless we type a capital
 
-
 " ================ Shorcut Map Keys ===========================
 map <C-a> <esc>ggVG<CR>
+
+nmap <Leader>w :w<CR>
+nmap <Leader>q :q<CR>
+nmap <Leader>x :q!<CR>
+
+" Fast split navigation with <Ctrl> + hjkl.
+noremap <c-h> <c-w><c-h>
+noremap <c-j> <c-w><c-j>
+noremap <c-k> <c-w><c-k>
+noremap <c-l> <c-w><c-l>
+
+"silent! helptags ALL  " Load help files for all plugins.

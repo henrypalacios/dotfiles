@@ -22,6 +22,9 @@ $ user: echo "${USER} " | tr ' ' '\n'
 # Create database
 mysql -u <user> -p -e "CREATE DATABASE <database> CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;"
 
+# Update password of user
+sudo mysql -e "ALTER USER <user>@<host> IDENTIFIED BY <new_password>; FLUSH PRIVILEGES;"
+
 # Export databse
 mysqldump -u <user> -p <database> > <path>
 

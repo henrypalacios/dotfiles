@@ -1,0 +1,10 @@
+% ufw
+
+# Show rules status numbered
+sudo ufw status numbered
+
+# Delete rule number <rule_id>
+sudo ufw delete <rule_id>
+
+# allow from specific IP Adrress or Subnet eg. 1.1.1.1/24
+sudo ufw allow from <ip_address> to any port <port>

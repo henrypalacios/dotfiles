@@ -25,3 +25,5 @@ source "$DOTLY_PATH/shell/zsh/bindings/reverse_search.zsh"
 
 # Read my bindings
 source "$DOTFILES_PATH/shell/zsh/bindings/key-bindings.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

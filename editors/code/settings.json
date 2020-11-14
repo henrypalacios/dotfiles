@@ -6,23 +6,13 @@
     "editor.suggestSelection": "first",
     "workbench.sideBar.location": "left",
     "workbench.colorTheme": "Monokai",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "terminal.integrated.fontFamily": "'monospace'",
     "terminal.integrated.fontSize": 13,
-    "python.jediEnabled": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "sqltools.connections": [
-        {
-            "database": "crypstation",
-            "dialect": "PostgreSQL",
-            "name": "PostgreSQL",
-            "password": "secret",
-            "port": 5432,
-            "server": "localhost",
-            "username": "henry"
-        }
-    ],
     "terminal.integrated.shell.linux": "/bin/zsh",
     "python.languageServer": "Microsoft",
     "window.zoomLevel": 1,
+    "files.watcherExclude": {
+        "**/.venv/**": true
+    },
 }
