@@ -53,6 +53,9 @@ git push <remote_name> <branch>:<branch_to_overwrite>
 # Overwrites remote branch with local branch changes
 git push <remote_name> <branch_name> -f
 
+# Git push remote force with care > https://thoughtbot.com/blog/git-push-force-with-lease
+git push --force-with-lease
+
 # Pulls changes to a remote repo to the local repo
 git pull --ff-only
 
