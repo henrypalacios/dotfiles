@@ -1,0 +1,14 @@
+% tmux
+
+-------------- Sessions -------------
+# New session ($ tmux new)
+tmux new-session -s <name-session>
+
+# Delete session ($ tmux kill-ses -t ...) 
+tmux kill-session -t <name-session>
+
+# Delete all session but the current
+tmux kill-session -a
+
+# Attach to last session ($ tmux a)
+tmux attach-session

@@ -15,4 +15,5 @@
     "files.watcherExclude": {
         "**/.venv/**": true
     },
+    "vim.leader": "<space>",
 }

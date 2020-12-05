@@ -25,7 +25,7 @@ completer.hist
 libsigar-universal64-macosx.dylib
 
 # CUSTOM
-*.no-commit.*
+*.no-commit*
 .env
 
 

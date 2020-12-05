@@ -6,26 +6,35 @@ set nocompatible
 " That means all \x commands turn into ,x
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
-let mapleader=","
+let mapleader="\<Space>"
 
 " =============== vim-plug Initialization ===============
 call plug#begin('~/.vim/plugged')
 
 " Theme
 Plug 'morhetz/gruvbox'
+
 " Search
 Plug 'easymotion/vim-easymotion'
+
 " Start Screen
 Plug 'mhinz/vim-startify'
+" Update session automatically as you exit vim
+let g:startify_session_persistence    = 1
+
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 let NERDTreeQuitOnOpen=1
-let NERDTreeShowHidden=1
+"let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.vscode$']
+
 " Status tabline
 Plug 'vim-airline/vim-airline'
+
 " Fuzzy Search
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 " Easily surround things
 Plug 'tpope/vim-surround'
 
@@ -47,10 +56,10 @@ set colorcolumn=80,120
 
 set number                      "Line numbers are good
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:—\ ,eol:¬
 set numberwidth=1              "Set number row width
 set mouse=a                     "Allow interaciton with mouse
-set clipboard=unnamed,unnamedplus "Copy to clipboard and paste out vim, (*, +) register
+set clipboard=unnamedplus "Copy to clipboard and paste out vim, (*, +) register
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
@@ -62,6 +71,7 @@ set autoread                    "Reload files changed outside vim
 set ruler                       "Add the current line and column"
 set encoding=utf-8              "encode files
 "set laststatus=2
+set rnu
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -96,6 +106,13 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
+" ================ Markdown ==============
+let g:vim_markdown_new_list_item_indent = 0
+
+setlocal formatoptions=tqlnrc
+set comments=b:>
+
+
 " Auto indent pasted text
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
@@ -103,11 +120,10 @@ nnoremap P P=`]<C-o>
 filetype plugin on
 filetype indent on
 
-set nowrap       "Don't wrap lines
+"set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
 " ================ Folds ============================
-
 set foldmethod=indent   "fold based on indent
 set foldnestmax=3       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
@@ -142,6 +158,8 @@ set smartcase       " ...unless we type a capital
 
 " ================ Shorcut Map Keys ===========================
 map <C-a> <esc>ggVG<CR>
+map <CR> o<ESC>
+map <S-CR> O<ESC>
 
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
@@ -153,4 +171,10 @@ noremap <c-j> <c-w><c-j>
 noremap <c-k> <c-w><c-k>
 noremap <c-l> <c-w><c-l>
 
+cmap w!! %!sudo tee > /dev/null
+
+" Paste without copy
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
 "silent! helptags ALL  " Load help files for all plugins.
