@@ -38,6 +38,7 @@ Plug 'junegunn/fzf.vim'
 " Easily surround things
 Plug 'tpope/vim-surround'
 
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -98,9 +99,9 @@ endif
 
 " ================ Indentation ======================
 
-set autoindent
-set smartindent
-set smarttab
+"set autoindent
+"set smartindent
+"set smarttab
 set shiftwidth=2
 set softtabstop=2
 set tabstop=2
@@ -114,8 +115,8 @@ set comments=b:>
 
 
 " Auto indent pasted text
-nnoremap p p=`]<C-o>
-nnoremap P P=`]<C-o>
+"nnoremap p p=`]<C-o>
+"nnoremap P P=`]<C-o>
 
 filetype plugin on
 filetype indent on

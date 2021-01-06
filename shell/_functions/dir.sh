@@ -7,7 +7,7 @@ function j() {
 
   [ -n "$fname" ] || source "$DOTFILES_PATH/modules/z/z.sh"
 
-  _z "$1"
+  _z -t "$1"
 }
 
 function recent_dirs() {

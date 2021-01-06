@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+source "$DOTFILES_PATH/scripts/core/documentation.sh"
+
+##? Inspect IP address of one container
+#?? 1.0.0
+##?
+##? Usage:
+##?   inspect
+docs::eval "$@"
+
+if docker ps >/dev/null 2>&1; then
+  container=$(docker ps | awk '{if (NR!=1) print $1 ": " $(NF)}' | fzf --height 40%)
+
+  if [[ -n $container ]]; then
+    container_id=$(echo $container | awk -F ': ' '{print $1}')
+
+    docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $container_id
+  else
+    echo "You haven't selected any container! ༼つ◕_◕༽つ"
+  fi
+else
+  echo "Docker daemon is not running! (ಠ_ಠ)"
+fi
+
