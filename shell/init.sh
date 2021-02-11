@@ -6,6 +6,6 @@ ulimit -u 2048
 alias sudo='sudo '
 
 # Register custom aliases and functions
-for aliasToSource in "$DOTFILES_PATH/shell/_aliases/"*; do source "$aliasToSource"; done
+source "$DOTFILES_PATH/shell/aliases.sh"
+source "$DOTFILES_PATH/shell/functions.sh"
 for exportToSource in "$DOTFILES_PATH/shell/_exports/"*; do source "$exportToSource"; done
-for functionToSource in "$DOTFILES_PATH/shell/_functions/"*; do source "$functionToSource"; done

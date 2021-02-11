@@ -1,4 +1,4 @@
-- clean: ['~']
+- clean: ["~"]
 
 - defaults:
     link:
@@ -6,16 +6,16 @@
       force: true
 
 - create:
-      - ~/.z
+    - ~/.z
 
 - link:
-    ~/.bashrc: shell/bash/.bashrc
     ~/.bash_profile: shell/bash/.bash_profile
+    ~/.bashrc: shell/bash/.bashrc
     ~/.gitconfig: git/.gitconfig
     ~/.gitignore_global: git/.gitignore_global
     ~/.profile: shell/bash/.profile
+    ~/.vimrc: editors/vim/.vimrc
     ~/.zimrc: shell/zsh/.zimrc
     ~/.zlogin: shell/zsh/.zlogin
     ~/.zshenv: shell/zsh/.zshenv
     ~/.zshrc: shell/zsh/.zshrc
-    ~/.vimrc: editors/vim/.vimrc

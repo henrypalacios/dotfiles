@@ -1,2 +1,1 @@
-source ~/.bashrc
-export PATH="$HOME/.cargo/bin:$PATH"
+source ~/.bashrcsource "$HOME/.cargo/env"
