@@ -29,11 +29,14 @@ alias s.='(subl $PWD &>/dev/null &)'
 alias o.='open .'
 alias up='dot package update_all'
 
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+# alias pbcopy='xclip -selection clipboard'
+# alias pbpaste='xclip -selection clipboard -o'
 
 # Jumps
 alias ~="cd ~"
 alias c='cd ~/Code'
+
+# Docker
+alias docorun="docker-compose run --rm --user $(id -u):$(id -g)" 
 
 eval $(thefuck --alias)

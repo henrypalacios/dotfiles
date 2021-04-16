@@ -971,7 +971,6 @@
     "editor.fontLigatures": true,
     "editor.renderWhitespace": "all",
     "editor.suggestSelection": "first",
-    "editor.minimap.enabled": false,
     "editor.cursorBlinking": "solid",
     "workbench.sideBar.location": "left",
     "workbench.colorTheme": "Monokai",
@@ -982,7 +981,6 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "terminal.integrated.shell.linux": "/bin/zsh",
     "python.languageServer": "Microsoft",
-    "window.zoomLevel": 0,
     "editor.lineNumbers":"relative",
     "files.watcherExclude": {
         //Python

@@ -4,7 +4,7 @@
 	signingkey = 3534C4A1817CB0296D083EC19F5E0AC82ED3FC5F
 [core]
 	excludesfile = /home/henry/.gitignore_global
-[url "https://github.com/"]
-	insteadOf = git@github.com:
-[url "https://"]
-	insteadOf = git://
+; [url "https://github.com/"]
+; 	insteadOf = git@github.com:
+; [url "https://"]
+; 	insteadOf = git://

@@ -18,18 +18,19 @@ commit=$(
     --date=human \
     --format="%C(auto)%h%d %s %C(black)%C(bold)%ad by %an" |
     fzf --ansi --no-sort \
-      --preview '(git diff-tree --no-commit-id --name-status -r {2})' \
+      --preview '
+        __commit="$(echo {} | grep -o "[a-f0-9]\{7\}")";
+        [ -z ${__commit} ] && git diff-tree --no-commit-id --name-status -r ${__commit}
+        ' \
       --preview-window right:35%
 )
 
 commit_hash=$(echo ${commit} | grep -o '[a-f0-9]\{7\}')
 
-command_exists() {
-  type "$1" >/dev/null 2>&1
-}
-
 if command_exists pbcopy; then
+  echo "Entre"
   echo ${commit_hash} | tr -d '\n' | pbcopy  
 else
+  echo "no pbcopy"
   echo ${commit_hash} | tr -d '\n' | xclip -selection clipboard
 fi
