@@ -2,12 +2,14 @@
 
 set -euo pipefail
 
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
 ##? Install Nginx
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   install_nginx
-
+docs::parse "$@"
 
 sudo apt update
 sudo apt -y install nginx 

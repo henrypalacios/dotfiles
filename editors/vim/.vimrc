@@ -22,12 +22,6 @@ Plug 'mhinz/vim-startify'
 " Update session automatically as you exit vim
 let g:startify_session_persistence    = 1
 
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-let NERDTreeQuitOnOpen=1
-"let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.vscode$']
-
 " Status tabline
 Plug 'vim-airline/vim-airline'
 
@@ -46,7 +40,7 @@ call plug#end()
 "
 "========= nmap plugins ========
 nmap <Leader>s <Plug>(easymotion-s2)
-nmap <Leader>b :NERDTreeToggle<CR>
+nmap <Leader>e :Lexplore<CR>
 nnoremap <C-p> :Files<CR>
 
 " ================ General Config ====================

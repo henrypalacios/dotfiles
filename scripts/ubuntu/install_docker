@@ -2,11 +2,15 @@
 
 set -euo pipefail
 
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
 ##? Install Docker-ce and add $USER to docker group
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   install_docker
+docs::parse "$@"
+
 
 # apt over https
 sudo apt-get install apt-transport-https \

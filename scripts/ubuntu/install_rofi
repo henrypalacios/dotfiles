@@ -2,11 +2,14 @@
 
 set -euo pipefail
 
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
 ##? Install rofi switch http://manpages.ubuntu.com/manpages/bionic/en/man1/rofi.1.html
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   install_rofi
+docs::parse "$@"
 
 
 sudo apt-get install -y rofi

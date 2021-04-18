@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
 ##? Install Rust, installer installs the stable version of the Rust compiler, its package manager, Cargo
 ##? these are installed by default under the ~/.cargo directory.
 ##? inspired from https://www.packtpub.com/application-development/mastering-rust-second-edition/1/ch01lvl1sec11/installing-the-rust-compiler-and-toolchain
@@ -9,6 +11,7 @@ set -euo pipefail
 ##?
 ##? Usage:
 ##?   install_rust
+docs::parse "$@"
 
 exports="${DOTFILES_PATH}/shell/_exports/exports.sh"
 rust_path="$HOME/.cargo"

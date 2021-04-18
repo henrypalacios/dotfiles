@@ -3,7 +3,6 @@
 set -euo pipefail
 
 source "$DOTLY_PATH/scripts/core/_main.sh"
-source "$DOTFILES_PATH/scripts/core/documentation.sh"
 
 ##? Set a virtual host of Nginx
 #?? 1.0.0
@@ -15,7 +14,7 @@ source "$DOTFILES_PATH/scripts/core/documentation.sh"
 ##? Options:
 ##?    -h --help   Show this screen.
 ##?    -d --database  nameDatabase
-docs::eval "$@"
+docs::parse "$@"
 
 domain=$1
 rootDir=$2

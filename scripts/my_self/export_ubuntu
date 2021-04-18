@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Export all installed packages
+#?? 1.0.0
+##?
+##? Usage:
+##?   packages_installed
+docs::parse "$@"
+
+path_os="${DOTFILES_PATH}/os/linux/packages_installed"
+
+snap list | awk '{print $1}' > "${path_os}/snap_apps.txt"
+echo 'snap apps exported!'
+
+dpkg-query -l | awk '{if ($1 == "ii") print $2}' > "${path_os}/packages_list.txt"
+echo 'apt-packages exported!'
+
+pip freeze >"$DOTFILES_PATH/langs/python/requirements.txt"
+echo 'Python apps exported!'
+
+ls -1 /usr/local/lib/node_modules | grep -v npm > "$DOTFILES_PATH/langs/js/global_modules.txt"
+echo 'NPM apps exported!'

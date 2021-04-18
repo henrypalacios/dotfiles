@@ -3,8 +3,6 @@
 set -euo pipefail
 
 source "$DOTLY_PATH/scripts/core/_main.sh"
-source "$DOTFILES_PATH/scripts/core/documentation.sh"
-
 
 ##? List all projects
 ##? If a second argument is passed it is filtered
@@ -15,13 +13,13 @@ source "$DOTFILES_PATH/scripts/core/documentation.sh"
 ##?
 ##? Options:
 ##?   --choose  Use choose instead fzf
-docs::eval "$@"
+docs::parse "$@"
 
 project_root_directories=(
     "$HOME/Code/hpalacios/"*
     "$HOME/Code/learning_path/"*
     "$HOME/Code/sandbox/"*
-    "$HOME/Code/mediasur/"*
+    "$HOME/Code/altoros/"*
     )
 [[ "$choose" == "false" ]] && filterer="fzf" || filterer="choose -c 181818"
 #project_directories=$(printf '%s\n' "${project_root_directories[@]}" | xargs ls -d | grep -v "_")

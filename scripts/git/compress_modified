@@ -2,15 +2,14 @@
 
 set -euo pipefail
 
-source "$DOTFILES_PATH/scripts/core/git.sh"
-source "$DOTFILES_PATH/scripts/core/documentation.sh"
+source "$DOTLY_PATH/scripts/core/_main.sh"
 
 ##? Compress only modified files
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   compress_modified
-docs::eval "$@"
+docs::parse "$@"
 
 
 zip ../modified-files.zip $(git diff --name-only HEAD)

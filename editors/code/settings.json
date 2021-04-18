@@ -988,5 +988,11 @@
     },
     "prettier.singleQuote": true,
     "editor.formatOnSave": true,
+    "workbench.editorAssociations": [
+      {
+        "viewType": "jupyter.notebook.ipynb",
+        "filenamePattern": "*.ipynb"
+      }
+    ],
     
 }

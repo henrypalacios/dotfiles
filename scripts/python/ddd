@@ -3,14 +3,13 @@
 set -euo pipefail
 
 source "$DOTLY_PATH/scripts/core/_main.sh"
-source "$DOTFILES_PATH/scripts/core/documentation.sh"
 
 ##? DDD
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   ddd hexagonal <path>
-docs::eval "$@"
+docs::parse "$@"
 
 mkdir -p "$path/application"
 touch "$path/application/__init__.py"

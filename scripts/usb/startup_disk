@@ -2,11 +2,14 @@
 
 set -euo pipefail
 
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
 ##? Creating Ubuntu USB Startup Disk Using DDrescue Command
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   startup_disk
+docs::parse "$@"
 
 ## TODO
 

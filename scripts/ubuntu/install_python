@@ -2,11 +2,14 @@
 
 set -euo pipefail
 
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
 ##? Install Python, pip and pipenv
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   install_python
+docs::parse "$@"
 
 
 if [[ "$(python3 -V)" =~ "Python 3" ]]; then

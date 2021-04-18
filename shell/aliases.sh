@@ -6,6 +6,7 @@ alias ...="cd ../.."
 alias ll="exa -l"
 alias la="exa -la"
 alias ~="cd ~"
+alias dotfiles="cd '$DOTFILES_PATH'"
 
 # Git
 alias gaa="git add -A"
@@ -23,20 +24,13 @@ alias gl="$DOTLY_PATH/bin/dot git pretty-log"
 
 # Utils
 alias k='kill -9'
-#alias i.='(idea $PWD &>/dev/null &)'
+alias i.='(idea $PWD &>/dev/null &)'
 alias c.='(code $PWD &>/dev/null &)'
-alias s.='(subl $PWD &>/dev/null &)'
 alias o.='open .'
 alias up='dot package update_all'
 
-# alias pbcopy='xclip -selection clipboard'
-# alias pbpaste='xclip -selection clipboard -o'
-
 # Jumps
-alias ~="cd ~"
 alias c='cd ~/Code'
 
 # Docker
 alias docorun="docker-compose run --rm --user $(id -u):$(id -g)" 
-
-eval $(thefuck --alias)

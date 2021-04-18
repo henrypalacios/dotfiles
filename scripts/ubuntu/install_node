@@ -2,38 +2,52 @@
 
 set -euo pipefail
 
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
 ##? Install Node and set a global folder in $HOME
-#?? 1.0.0
+#?? 1.0.1
 ##?
 ##? Usage:
 ##?   install_node
+docs::parse "$@"
 
-exports="${DOTFILES_PATH}/shell/_exports/exports.sh"
-npm_path="${HOME}/.npm-global"
+node_npm_install_old_way() {
+  exports="${DOTFILES_PATH}/shell/_exports/exports.sh"
+  npm_path="${HOME}/.npm-global"
 
-sudo apt install nodejs
-#$(echo node –version)
+  sudo apt install nodejs
+  #$(echo node –version)
 
-sudo apt install npm
-#$(echo npm –version)
+  sudo apt install npm
+  #$(echo npm –version)
 
 
-echo "Creating global folder ${npm_path}"
+  echo "Creating global folder ${npm_path}"
 
-if [ ! -d ${npm_path} ]; then
-    mkdir -p ${npm_path}
-fi
+  if [ ! -d ${npm_path} ]; then
+      mkdir -p ${npm_path}
+  fi
 
-echo "Setting as npm config prefix ${npm_path}"
-npm config set prefix '~/.npm-global'
+  echo "Setting as npm config prefix ${npm_path}"
+  npm config set prefix '~/.npm-global'
 
-if ! grep -qxF 'export NPM_PACKAGES="${npm_path}"' ${exports} ; then 
-    echo -e 'Stablishing node path in ${npm_path}...'
-    envfix='
-export NPM_PACKAGES="%s"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules${NODE_PATH:+:$NODE_PATH}"
-export PATH="$NPM_PACKAGES/bin:$PATH"
-'
+  if ! grep -qxF 'export NPM_PACKAGES="${npm_path}"' ${exports} ; then 
+      echo -e 'Stablishing node path in ${npm_path}...'
+      envfix='
+  export NPM_PACKAGES="%s"
+  export NODE_PATH="$NPM_PACKAGES/lib/node_modules${NODE_PATH:+:$NODE_PATH}"
+  export PATH="$NPM_PACKAGES/bin:$PATH"
+  '
 
-    printf "${envfix}" ${npmdir} >> ${exports}
-fi
+      printf "${envfix}" ${npmdir} >> ${exports}
+  fi
+}
+
+
+
+
+# Install Volta
+curl https://get.volta.sh | bash
+
+# install Node
+echo "Now go out from this terminal and back in, then execute `volta install node`"

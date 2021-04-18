@@ -2,11 +2,14 @@
 
 set -euo pipefail
 
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
 ##? Install Mysql
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   install_mysql
+docs::parse "$@"
 
 sudo apt -y install mysql-client mysql-server
  

@@ -2,11 +2,14 @@
 
 set -euo pipefail
 
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
 ##? Install PHP and extension for Laravel, Symfony, MySQL, PostgreSQL, RabbitMQ
 #?? 1.0.0
 ##?
 ##? Usage:
 ##?   install_php
+docs::parse "$@"
 
 # install latest php. check https://www.php.net/supported-versions.php
 sudo apt install -y php-fpm php-cli unzip
