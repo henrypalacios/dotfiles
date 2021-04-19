@@ -15,4 +15,8 @@ fonts_path=~/.fonts
 
 [ -d $fonts_path ] || mkdir $fonts_path
 
+echo "✍️ Installing Fira Code Mono font"
 cd $fonts_path && curl -fLo "Fira Code Medium Nerd Font Complete Mono.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/FiraCode/Medium/complete/Fira%20Code%20Medium%20Nerd%20Font%20Complete%20Mono.ttf?raw=true
+
+echo "✍️ JetBrainsMono J Code font"
+cd $fonts_path && curl -fLo "JetBrains Mono Medium Nerd Font Complete Mono.ttf" https://github.comryanoasis/nerd-fonts/blob/master/patched-fonts/JetBrainsMono/Ligatures/Medium/complete/JetBrains%20Mono%Medium%20Nerd%20Font%20Complete%20Mono.ttf?raw=true

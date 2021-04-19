@@ -9,7 +9,10 @@
     ~/.dotly: os/linux/.dotly
     ~/.Xresources: os/linux/.Xresources
     ~/.config/rofi: os/linux/rofi
-    ~/.config/Code/User/keybindings.json: editors/code/keybindings.json
-    ~/.config/Code/User/settings.json: editors/code/settings.json
-    ~/.config/Code/User/snippets: editors/code/snippets
     ~/.tmux.conf: os/linux/.tmux.conf
+    ~/.vimrc: editors/vim/.vimrc
+    ~/.dotfiles/editors/nvim: ~/Code/hpalacios/nvcode_fork
+    ~/.config/nvim: editors/nvim
+    ~/.config/VSCodium/User/keybindings.json: editors/code/keybindings.json
+    ~/.config/VSCodium/User/settings.json: editors/code/settings.json
+    ~/.config/VSCodium/User/snippets: editors/code/snippets

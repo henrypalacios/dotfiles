@@ -20,7 +20,8 @@ else
 fi
 
 ## Install Additional Tools
-sudo apt install -y build-essential libssl-dev libffi-dev default-libmysqlclient-dev
+sudo apt install -y build-essential libssl-dev libffi-dev default-libmysqlclient-dev \
+    python3-distutils python3-apt python3-testresources
 
 ## Install pip3
 if [[ "$(pip -V)" =~ "pip 2" ]]; then
@@ -34,12 +35,12 @@ fi
 
 
 ## Install pipenv
-if [[ "$(pipenv --version)" =~ "pipenv," ]]; then
-    echo "pipenv it's installed"
-else
-    echo "Installing pipenv..."
-    sudo -H pip install -U pipenv
-fi
+#if [[ "$(pipenv --version)" =~ "pipenv," ]]; then
+#    echo "pipenv it's installed"
+#else
+#    echo "Installing pipenv..."
+#    sudo -H pip install -U pipenv
+#fi
 
 # envfix='
 

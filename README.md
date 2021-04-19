@@ -14,6 +14,7 @@
     * Check to new location is added in `.bashrc` and `.zshrc`
 - [dotly pbcopy](./modules/dotly/bin/pbcopy) require `xclip`
     * `sudo apt-get install xclip`
+    *(optional) `sudo apt-get install xsel`
 
 ## Restore your Dotfiles
 
@@ -25,12 +26,16 @@
 * Restart your terminal
 * Import your packages `dot package import`
 * Put `zsh` like a default terminal `chsh -s $(which zsh)`. Finally, log out and log back in.
+* [Generate a new SSH key](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and adding it to the ssh-agent `ssh-keygen -t ed25519 -C "your_email@example.com"O`
+
 
 ## TODO
 - [ ] PR, rust error in dot self install
 - [ ] autoinstall [Requirements](#Requirements)
 - [ ] PR, erro `No such file or directory` in `bash/completions/*` by `.gitkeep`
 - [ ] Check `installation vim script`
+- [ ] create dot to install `vscodium` and its configuration.
 
 ## References
 - [How to make zsh the default shell](https://askubuntu.com/questions/131823/how-to-make-zsh-the-default-shell)
+- [SSH Key: Ed25519 vs RSA](https://security.stackexchange.com/questions/90077/ssh-key-ed25519-vs-rsa)
