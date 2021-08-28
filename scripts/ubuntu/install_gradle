@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Install Gradle, Gradle is a general-purpose tool used to build, 
+##? automate, and deliver software. It is primarily used for Java, C++, and Swift projects.
+##? these are installed by default under the ~/opt/gradle directory.
+##?
+##? inspired from https://linuxize.com/post/how-to-install-gradle-on-ubuntu-20-04/
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_gradle
+docs::parse "$@"
+
+# Check new version here -> https://gradle.org/releases/
+VERSION=6.9.1
+
+install_version_if_doesnt_exists() {
+  gradle_path=/opt/gradle/gradle-${VERSION}
+  if [ -d ${gradle_path} ]; then
+    echo "🕵️ Gradle Version ${VERSION} is already installed"
+  else
+    wget https://services.gradle.org/distributions/gradle-${VERSION}-bin.zip -P /tmp
+
+    sudo unzip -d /opt/gradle /tmp/gradle-${VERSION}-bin.zip
+
+    sudo ln -s ${gradle_path} /opt/gradle/latest
+  fi
+}
+
+install_version_if_doesnt_exists
+GRADLE_HOME=/opt/gradle/latest
+
+echo "👇 Add this path in your bin PATH 👇"
+echo "export GRADLE_HOME=${GRADLE_HOME}"
+echo export PATH=\${GRADLE_HOME}/bin:\${PATH}

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Install Visuatl Studio Code
+##? inspired from https://linuxize.com/post/how-to-install-visual-studio-code-on-ubuntu-20-04/
+##? Create code line command https://askubuntu.com/questions/1352538/how-to-create-vscode-or-code-command-line-by-launch-visual-studio-code-from
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_vscode
+docs::parse "$@"
+
+sudo snap install --classic code

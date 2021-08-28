@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTLY_PATH/scripts/core/_main.sh"
+
+##? Install latest version go language
+#?? 1.0.0
+##?
+##? Usage:
+##?   install_php
+docs::parse "$@"
+
+# download latest go. check https://golang.org/dl/
+go_version=go1.16.4.linux-amd64.tar.gz
+path_download=~/Downloads/
+
+wget https://dl.google.com/go/$go_version -O $path_download$go_version
+# `sha256sum` tarball verification
+sha256sum $path_download$go_version
+
+# Delete previous versions
+echo "Deleting previous versions" && rm -rf /usr/local/go 
+
+# Extract and install | official path recomended
+sudo tar -C /usr/local -xzf $path_download$go_version
+
+# Delete Files
+rm $path_download$go_version
+
+# Protect all binaries of go
+# https://www.digitalocean.com/community/tutorials/how-to-install-go-and-set-up-a-local-programming-environment-on-ubuntu-18-04-es
+# sudo chown -R root:root /usr/local/go
+

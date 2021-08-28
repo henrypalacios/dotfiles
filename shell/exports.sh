@@ -1,6 +1,7 @@
-export JAVA_HOME='/Library/Java/JavaVirtualMachines/amazon-corretto-15.jdk/Contents/Home'
+export JAVA_HOME='/usr/lib/jvm/java-11-openjdk-amd64'
+export GRADLE_HOME=/opt/gradle/latest
 export GEM_HOME="$HOME/.gem"
-export GOPATH="$HOME/.go"
+export GOPATH="/usr/local/go"
 export VOLTA_HOME="$HOME/.volta"
 
 export NAVI_PATH="/home/henry/.dotfiles/doc/navi"
@@ -15,6 +16,7 @@ export path=(
   "$DOTLY_PATH/bin"
   "$DOTFILES_PATH/bin"
   "$JAVA_HOME/bin"
+  "$GRADLE_HOME/bin"
   "$GEM_HOME/bin"
   "$GOPATH/bin"
   "$HOME/.cargo/bin"
